@@ -1,1 +1,17 @@
-<p>todolist works!</p>
+<div>
+    <h2>Todo List</h2>
+    <input [(ngModel)]="newTodo" placeholder="Add a new todo" />
+    <button (click)="addTodo()">Add</button>
+
+    <ul>
+      <li *ngFor="let todo of todos" [ngClass]="{'completed': todo.completed, 'postponed': todo.postponed}">
+        {{ todo.text }}
+        <button (click)="markComplete(todo)">Mark as Complete</button>
+        <button (click)="postpone(todo)">Postpone</button>
+        <button (click)="delete(todo)">Delete</button>
+      </li>
+    </ul>
+
+    <button (click)="clean()">Clean Completed</button>
+    <button (click)="restore()">Restore Postponed</button>
+  </div>
